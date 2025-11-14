@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppEventos.Views.Cadastro"
+             Title="Cadastro"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <VerticalStackLayout VerticalOptions="Center"
+                     Padding="30"
+                     Spacing="15">
+            <Label Text="Cadastro de Eventos"
+           FontFamily="OrbitronMedium"
+           FontSize="27"
+           TextColor="Turquoise"/>
+
+            <Frame Padding="10" Margin="10">
+                <VerticalStackLayout>
+                    <Label Text="Nome do evento" FontFamily="OrbitronRegular" />
+                    <Entry x:Name="nome"   Placeholder="Digite o nome" />
+
+                    <VerticalStackLayout>
+                        <Label Text="Local" FontFamily="OrbitronRegular"/>
+                        <Entry x:Name="local"  Placeholder="Digite o local" />
+                    </VerticalStackLayout>
+
+                    <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto">
+                        <Label Grid.Column="0"
+                   Text="Número de Participantes:" FontFamily="OrbitronRegular"
+                   VerticalOptions="Center" />
+
+                        <Label Grid.Column="1"
+                   Text="{Binding Source={x:Reference stp_participantes}, Path=Value}"
+                   TextColor="Green"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+
+                        <Stepper Grid.Column="2"
+                     x:Name="stp_participantes"
+                     Minimum="0"
+                     Maximum="200"
+                     Increment="1"
+                     HorizontalOptions="End" />
+                    </Grid>
+                    <VerticalStackLayout Spacing="15" Padding="20">
+
+                        <Frame BorderColor="LightSeaGreen"  CornerRadius="8" Padding="10">
+                            <VerticalStackLayout>
+                                <Label Text="Custo por participante"  FontFamily="OrbitronRegular" TextColor="Red"/>
+                                <Entry x:Name="custo" Placeholder="Digite o valor" Keyboard="Numeric" />
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <Frame BorderColor="LightSeaGreen"  CornerRadius="8" Padding="10">
+                            <VerticalStackLayout>
+                                <Label Text="Data de início" FontFamily="OrbitronRegular" TextColor="Red" />
+                                <DatePicker x:Name="dtpk_inicio"/>
+
+                                <Label Text="Data de término" FontFamily="OrbitronRegular" TextColor="Red"/>
+                                <DatePicker x:Name="dtpk_termino"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                        <Button Text="Cadastrar Evento"
+                            BackgroundColor="Turquoise"
+                            TextColor="White"
+                            Clicked="Button_Clicked"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
