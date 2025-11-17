@@ -18,8 +18,8 @@ public partial class Cadastro : ContentPage
             Local = local.Text,
             NumeroParticipantes = (int)stp_participantes.Value,
             CustoPorParticipante = double.Parse(custo.Text),
-            DataInicio = dtpk_inicio.Date ?? DateTime.Today,
-            DataTermino = dtpk_termino.Date ?? DateTime.Today
+            DataInicio = dtpk_inicio.Date == null ? DateTime.Today: dtpk_inicio.Date,
+            DataTermino = dtpk_termino.Date == null ? DateTime.Today: dtpk_termino.Date,
         };
 
         // Navegar para a página de resumo passando o objeto
